@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="C:\Users\15146\OneDrive\Desktop\Jeopardy_Quiz\favicon-16x16.png">
+        <link rel="stylesheet" type="text/css" href="app.css">
+        <title>Jeopardy Quiz</title>
+    </head>
+
+    <body>
+        <h1>Jeopardy Quiz</h1>
+        <div id="container">
+            <span id="question"><text id="Q">Q: </text><text id="question-text"></text></span>
+            <span id="category-value-container">
+                <div id="category-container">
+                    <div id="category-tite">Category:</div>
+                    <div id="category-text"></div>
+                </div>
+                <div id="value-container">
+                    <div id="value-tite">Value:</div>
+                    <div id="value-text"></div>
+                </div>
+                <div id="ponits-container">
+                    <div id="points-tite">Value:</div>
+                    <div id="points-text"></div>
+                </div>
+            </span>
+            <form id="answer">
+                <label for="answer-input">What/who is</label>
+                <input type="text" id="answer-input" name="answer-input">
+                <button id="submit">Submit</button>
+            </form>
+            <span id="buttons"><button id="new-question-button">New
+                    Question</button><button id="giveup">I give up</button></span>
+            <text id="result"></text>
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script src="app.js"></script>
+        </div>
+    </body>
+
+</html>
