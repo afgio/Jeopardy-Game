@@ -3,6 +3,7 @@ const submit = document.querySelector('#submit');
 const newQuestion = document.querySelector('#new-question-button');
 const category = document.querySelector('#category-text');
 const value = document.querySelector('#value-text');
+const points_text = document.querySelector('#points-text');
 const form = document.querySelector('form');
 const answerInput = document.querySelector('#answer-input')
 const result = document.querySelector('#result');
@@ -10,6 +11,7 @@ const give_up = document.querySelector('#giveup');
 
 let answer = "";
 let input = "";
+let points = 0;
 
 const newJeopardyQuestion = async () => {
     try {
@@ -18,7 +20,7 @@ const newJeopardyQuestion = async () => {
         questionText.innerHTML = res.data[0].question;
         category.innerHTML = res.data[0].category.title;
         value.innerHTML = res.data[0].value;
-        answer = res.data[0].answer
+        answer = res.data[0].answer.toLowerCase().replace(/<(.|\n)*?>/g, '');
         console.log(res.data)
         console.log(answer);
     } catch (error) {
@@ -31,13 +33,15 @@ newJeopardyQuestion();
 newQuestion.addEventListener('click', () => {
     newJeopardyQuestion();
     result.innerHTML = "";
-    answerInput.value = "";           //find out how to clear this 
+    answerInput.value = "";
 })
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    if (answer === answerInput.value) {
-        result.innerHTML = 'Correct!'
+    if (answer === answerInput.value.toLowerCase()) {
+        result.innerHTML = 'Correct!';
+        points += parseInt(value.innerHTML);
+        points_text.innerHTML = points.toString();
     } else {
         result.innerHTML = 'Incorrect :('
     }
@@ -48,16 +52,3 @@ give_up.addEventListener('click', () => {
     submit.disabled = true;
 })
 
-// enter.addEventListener('click', () => {
-//     if (input.includes(answer))
-// })
-
-// 1) connect 'enter' button to input field
-
-// 2) check entered answer with correct answer and return if correct/incorrect
-
-// 3) Add "I give up" button which reveals answer
-
-// 4) add looping jeopardy song
-
-// 5) style
